@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 export default function AdminList() {
   const dataBase = getDatabase(app);
   const [users, setUsers] = useState();
+
   const navigate = useNavigate();
 
   const handleEdit = (id) => {
@@ -14,7 +15,9 @@ export default function AdminList() {
   };
 
   useEffect(() => {
-    const dbRef = ref(dataBase, "Admin/");
+    const dbRef = ref(dataBase, "admin/");
+    console.log(dbRef);
+
     const cleanUp = onValue(dbRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
@@ -24,13 +27,15 @@ export default function AdminList() {
         }));
 
         setUsers(temp);
+      } else {
+        setUsers([]);
       }
     });
     return () => cleanUp();
   }, []);
 
   const handleDelete = async (id) => {
-    const dbRef = ref(dataBase, `Admin/${id}`);
+    const dbRef = ref(dataBase, `admin/${id}`);
     const result = await remove(dbRef);
     setUsers((state) => state.filter((user) => user.id != id));
   };
@@ -57,7 +62,7 @@ export default function AdminList() {
             </thead>
             <tbody>
               {users &&
-                users.map((user, idx) => {
+                users.map((user) => {
                   return (
                     <tr key={user.id} className="bg-white border-b hover:bg-gray-50">
                       <td className="px-6 py-4">{user.name}</td>

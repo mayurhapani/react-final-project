@@ -2,10 +2,12 @@ import { getDatabase, onValue, ref, update } from "firebase/database";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import app from "../firebase/firebase";
+import { EmailAuthProvider, getAuth, reauthenticateWithCredential, updatePassword } from "firebase/auth";
 
 export default function AdminEdit() {
   const params = useParams();
   const id = params.id;
+  const dataBase = getDatabase(app);
 
   console.log(id);
 
@@ -14,8 +16,8 @@ export default function AdminEdit() {
     name: "",
     email: "",
     password: "",
+    currentPassword: "",
   });
-  const dataBase = getDatabase(app);
 
   const handleChange = (e) => {
     setInput({ ...input, [e.target.id]: e.target.value });
@@ -23,14 +25,37 @@ export default function AdminEdit() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const dbRef = ref(dataBase, `Admin/${id}`);
+    const auth = getAuth(app);
+
+    const dbRef = ref(dataBase, `admin/${id}`);
     await update(dbRef, input);
-    navigate("/AdminList");
+
+    console.log(input.password);
+
+    if (input.password.length < 6) {
+      alert("Password must be at least 6 characters long.");
+      return; // Exit the function if the password is too short
+    }
+
+    try {
+      // Reauthenticate the user before updating the password
+      const credential = EmailAuthProvider.credential(auth.currentUser.email, input.currentPassword);
+      await reauthenticateWithCredential(auth.currentUser, credential);
+
+      // Update the password in Firebase Authentication
+      await updatePassword(auth.currentUser, input.password);
+
+      // Navigate back to AdminList
+      navigate("/AdminList");
+    } catch (error) {
+      console.error("Error updating password:", error);
+      // Handle error (e.g., display error message)
+    }
   };
 
   useEffect(() => {
     if (id) {
-      const dbRef = ref(dataBase, `Admin/${id}`);
+      const dbRef = ref(dataBase, `admin/${id}`);
       onValue(dbRef, (snapshot) => {
         const data = snapshot.val();
         setInput(data);
@@ -74,12 +99,27 @@ export default function AdminEdit() {
           />
         </div>
         <div className="mb-5">
+          <label htmlFor="currentPassword" className="block mb-2 text-sm font-medium text-white">
+            Current password
+          </label>
+          <input
+            type="password"
+            id="currentPassword"
+            placeholder="Enter Your Current Password"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            required
+            value={input.currentPassword}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-5">
           <label htmlFor="password" className="block mb-2 text-sm font-medium text-white">
-            Your password
+            Your New password
           </label>
           <input
             type="password"
             id="password"
+            placeholder="Enter Your New Password"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             required
             value={input.password || ""}
