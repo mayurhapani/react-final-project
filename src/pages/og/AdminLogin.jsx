@@ -65,39 +65,33 @@ export default function AdminLogin() {
 
   return (
     <>
-      <div className="bg-[#009487] h-96 relative">
-        <h1 className="text-center text-[3rem] text-white p-14">Employee Managment System</h1>
-
-        <div className="flex flex-col justify-center items-center mx-auto p-10 shadow-2xl w-1/4 absolute bg-white inset-x-0 rounded-md">
-          <h2 className="text-2xl mb-4 ms-[-20px] font-semibold"><i class="ri-user-fill"></i> Login</h2>
-          <form onSubmit={handleSubmit} className="w-full max-w-sm">
-            <input
-              className="border py-1 px-3 w-full mb-4 outline-[#009487]"
-              name="email"
-              type="email"
-              placeholder="Enter Your Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <br /> <br />
-            <input
-              className="border py-1 px-3 w-full mb-4 outline-[#009487]"
-              name="password"
-              type="password"
-              placeholder="Enter Your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <br /><br />
-            <Link to={"/"} className="text-[#008075]">Forgot Password ?</Link>
-            <br /><br />
-            <button className="border py-1 px-3 bg-[#008075] text-white w-full mb-4" type="submit">
-              Login
-            </button>
-            <br />
-            <Link to={"/AdminRegister"} className="text-[#008075]">If Do Not Have Account</Link>
-          </form>
-        </div>
+      <div className="w-1/2 flex flex-col justify-center items-center">
+        <h2> Login</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            className="border py-1 px-3"
+            name="email"
+            type="email"
+            placeholder="Enter Your Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <br /> <br />
+          <input
+            className="border py-1 px-3"
+            name="password"
+            type="password"
+            placeholder="Enter Your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <br /> <br />
+          <button className="border py-1 px-3" type="submit">
+            Login
+          </button>
+          <br /> <br />
+          <Link to={"/AdminRegister"}>If Do Not Have Account</Link>
+        </form>
       </div>
     </>
   );
