@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { child, get, getDatabase, push, ref, set } from "firebase/database";
+import { child, get, getDatabase, ref } from "firebase/database";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import app from "../firebase/firebase";
 // import firebase from "firebase/app";

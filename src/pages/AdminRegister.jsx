@@ -46,6 +46,7 @@ export default function AdminRegister() {
           email: input.email,
           role: input.role,
         });
+        return navigate("/AdminDeshbord");
       }
 
       // const userRef = ref(db, `users/${user.uid}`);
