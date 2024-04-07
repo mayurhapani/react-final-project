@@ -30,13 +30,31 @@ export default function AdminRegister() {
 
       // Store user information including role in the database
       const db = getDatabase();
-      const userRef = ref(db, `users/${user.uid}`);
+      if (input.role == "admin") {
+        const userRef = ref(db, `admin/${user.uid}`);
 
-      await set(userRef, {
-        name: input.name,
-        email: input.email,
-        role: input.role,
-      });
+        await set(userRef, {
+          name: input.name,
+          email: input.email,
+          role: input.role,
+        });
+      } else {
+        const userRef = ref(db, `employee/${user.uid}`);
+
+        await set(userRef, {
+          name: input.name,
+          email: input.email,
+          role: input.role,
+        });
+      }
+
+      // const userRef = ref(db, `users/${user.uid}`);
+
+      // await set(userRef, {
+      //   name: input.name,
+      //   email: input.email,
+      //   role: input.role,
+      // });
 
       navigate("/");
     } catch (error) {

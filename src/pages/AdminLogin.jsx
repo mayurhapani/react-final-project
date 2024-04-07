@@ -20,7 +20,9 @@ export default function AdminLogin() {
     const db = getDatabase(); // Get a reference to your Firebase database
 
     try {
-      const snapshot = await get(child(ref(db), `users/${userId}/role`)); // Assuming user roles are stored under 'users' node with the userId as key
+      const snapshot = await get(child(ref(db), `admin/${userId}/role`)); // Assuming user roles are stored under 'users' node with the userId as key
+      // console.log(snapshot._node.value_);
+
       if (snapshot.exists()) {
         console.log(snapshot.val());
 
