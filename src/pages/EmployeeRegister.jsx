@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 export default function EmployeeRegister() {
   const dataBase = getDatabase(app);
   const [departments, setDepartments] = useState([]);
-  console.log(departments);
+  // console.log(departments);
 
   const [input, setInput] = useState({
     name: "",
@@ -47,75 +47,78 @@ export default function EmployeeRegister() {
 
   return (
     <>
-      <h1 className="text-center text-4xl my-8 font-semibold text-white"> Add Employee</h1>
-      <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
-        <div className="mb-5">
-          <label htmlFor="name" className="block mb-2 text-sm font-medium text-white">
-            Your name
-          </label>
-          <input
-            type="name"
-            id="name"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            placeholder="Enter Your Name"
-            required
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-5">
-          <label htmlFor="email" className="block mb-2 text-sm font-medium text-white">
-            Your email
-          </label>
-          <input
-            type="email"
-            id="email"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            placeholder="Enter Your Email Address"
-            required
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-5">
-          <label htmlFor="password" className="block mb-2 text-sm font-medium text-white">
-            Your password
-          </label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter Your Password"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            required
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-5">
-          <label htmlFor="confirmPassword" className="block mb-2 text-sm font-medium text-white">
-            Confirm password
-          </label>
-          <input
-            type="password"
-            id="confirmPassword"
-            placeholder="Confirm Your Password"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            required
-            onChange={handleChange}
-          />
-        </div>
+      <div className="bg-[#009487] h-96 relative">
+        <h1 className="text-center text-[3rem] text-white p-14"> Add Employee</h1>
+        <div className="shadow-2xl w-1/4 mx-auto p-10 absolute inset-x-0 bg-white ">
+          <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
+            <div className="mb-5">
+              <input
+                type="name"
+                id="name"
+                className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                placeholder="Enter Your Name"
+                required
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-5">
+              <input
+                type="email"
+                id="email"
+                className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                placeholder="Enter Your Email Address"
+                required
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-5">
+              <input
+                type="password"
+                id="password"
+                placeholder="Enter Your Password"
+                className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                required
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-5">
+              <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Confirm Your Password"
+                className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                required
+                onChange={handleChange}
+              />
+            </div>
 
-        <button
-          type="submit"
-          className="bg-gray-300 hover:bg-gray-800 text-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-        >
-          Submit
-        </button>
+            <div className="mb-5">
+              <select name="departments" id="departments" className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg  block w-full p-2.5">
+                <option disabled selected value="select">Select Department</option>
+                {departments.map((option, index) => (
+                  <option key={index} value={option}>{option}</option>
+                ))}
+              </select>
+            </div>
 
-        <Link
-          to="/Admin"
-          className="bg-gray-300 hover:bg-gray-800 text-black hover:text-white ms-5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-        >
-          Back
-        </Link>
-      </form>
+            <button
+              type="submit"
+              className="bg-[#009487] hover:bg-[#007269] text-white font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            >
+              Submit
+            </button>
+
+            <Link
+              to="/Admin"
+              className="bg-[#009487] hover:bg-[#007269] text-white ms-5 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            >
+              Back
+            </Link>
+          </form>
+        </div>
+      </div>
+
+
     </>
   );
 }

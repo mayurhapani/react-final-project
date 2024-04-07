@@ -12,14 +12,19 @@ import EmployeeRegister from "./pages/EmployeeRegister.jsx";
 import EmployeeList from "./pages/EmployeeList.jsx";
 import EmployeeEdit from "./pages/EmployeeEdit.jsx";
 import EmployeeDeshbord from "./pages/EmployeeDeshbord.jsx";
+
 import LeaveTable from "./pages/LeaveTable.jsx";
 import LeaveTypeAdd from "./pages/LeaveTypeAdd.jsx";
 import LeaveTypeEdit from "./pages/LeaveTypeEdit.jsx";
 import LeaveApplication from "./pages/LeaveApplication.jsx";
+
 import DepartmentTable from "./pages/DepartmentTable.jsx";
 import DepartmentTypeAdd from "./pages/DepartmentTypeAdd.jsx";
 import DepartmentTypeEdit from "./pages/DepartmentTypeEdit.jsx";
 import EmployeeView from "./pages/EmployeeView.jsx";
+import SaleryAdd from "./pages/SaleryAdd.jsx";
+import SaleryTable from "./pages/SaleryTable.jsx";
+import SaleryEdit from "./pages/SaleryEdit.jsx";
 
 function App() {
   return (
@@ -46,6 +51,10 @@ function App() {
       <Route path="/LeaveTable" element={<LeaveTable />} />
       <Route path="/LeaveTypeAdd" element={<LeaveTypeAdd />} />
       <Route path="/LeaveTypeEdit/:id" element={<LeaveTypeEdit />} />
+
+      <Route path="/SaleryTable" element={<SaleryTable />} />
+      <Route path="/SaleryAdd" element={<SaleryAdd />} />
+      <Route path="/SaleryEdit/:id" element={<SaleryEdit />} />
 
       <Route path="/LeaveApplication" element={<LeaveApplication />} />
     </Routes>
