@@ -29,8 +29,8 @@ function App() {
 
       {/* <Route path="/EmployeeLogin" element={<EmployeeLogin />} /> */}
       <Route path="/EmployeeRegister" element={<EmployeeRegister />} />
-      {/* <Route path="/EmployeeList" element={<EmployeeList />} /> */}
-      {/* <Route path="/EmployeeEdit" element={<EmployeeEdit />} /> */}
+      <Route path="/EmployeeList" element={<EmployeeList />} />
+      <Route path="/EmployeeEdit/:id" element={<EmployeeEdit />} />
       <Route path="/EmployeeDeshbord" element={<EmployeeDeshbord />} />
 
       <Route path="/LeaveTable" element={<LeaveTable />} />

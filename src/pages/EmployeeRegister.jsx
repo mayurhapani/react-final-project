@@ -20,7 +20,7 @@ export default function EmployeeRegister() {
     e.preventDefault();
     const dbRef = ref(dataBase, "Employee/");
     await push(dbRef, input);
-    navigate("/EmployeeLogin");
+    navigate("/EmployeeList");
   };
 
   return (
