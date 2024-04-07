@@ -3,6 +3,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom"; // Import useHistory for programmatic navigation
 import EmployeeCount from "./EmployeeCount";
 import LeaveTypeCount from "./LeaveTypeCount";
+import DepartmentTypeCount from "./DepartmentTypeCount";
 
 const auth = getAuth();
 
@@ -34,6 +35,7 @@ export default function AdminDeshbord() {
       <div>AdminDeshbord</div>
       <EmployeeCount />
       <LeaveTypeCount />
+      <DepartmentTypeCount />
     </>
   );
 }

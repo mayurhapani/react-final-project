@@ -15,6 +15,10 @@ import EmployeeDeshbord from "./pages/EmployeeDeshbord.jsx";
 import LeaveTable from "./pages/LeaveTable.jsx";
 import LeaveTypeAdd from "./pages/LeaveTypeAdd.jsx";
 import LeaveTypeEdit from "./pages/LeaveTypeEdit.jsx";
+import LeaveApplication from "./pages/LeaveApplication.jsx";
+import DepartmentTable from "./pages/DepartmentTable.jsx";
+import DepartmentTypeAdd from "./pages/DepartmentTypeAdd.jsx";
+import DepartmentTypeEdit from "./pages/DepartmentTypeEdit.jsx";
 
 function App() {
   return (
@@ -33,9 +37,15 @@ function App() {
       <Route path="/EmployeeEdit/:id" element={<EmployeeEdit />} />
       <Route path="/EmployeeDeshbord" element={<EmployeeDeshbord />} />
 
+      <Route path="/DepartmentTable" element={<DepartmentTable />} />
+      <Route path="/DepartmentTypeAdd" element={<DepartmentTypeAdd />} />
+      <Route path="/DepartmentTypeEdit/:id" element={<DepartmentTypeEdit />} />
+
       <Route path="/LeaveTable" element={<LeaveTable />} />
       <Route path="/LeaveTypeAdd" element={<LeaveTypeAdd />} />
       <Route path="/LeaveTypeEdit/:id" element={<LeaveTypeEdit />} />
+
+      <Route path="/LeaveApplication" element={<LeaveApplication />} />
     </Routes>
   );
 }

@@ -1,17 +1,12 @@
-import { getDatabase, onValue, ref, update } from "firebase/database";
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import app from "../firebase/firebase";
+import { getDatabase, push, ref, set } from "firebase/database";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function LeaveTypeEdit() {
-  const params = useParams();
-  const id = params.id;
-  const dataBase = getDatabase(app);
-
+export default function DepartmentTypeAdd() {
   const navigate = useNavigate();
 
   const [input, setInput] = useState({
-    LeaveType: "",
+    name: "",
   });
 
   const handleChange = (e) => {
@@ -21,39 +16,40 @@ export default function LeaveTypeEdit() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const dbRef = ref(dataBase, `leaveType/${id}`);
-    await update(dbRef, input);
+    try {
+      // Store user information including role in the database
+      const db = getDatabase();
 
-    navigate("/LeaveTable");
-  };
+      const userRef = ref(db, `Departments`);
 
-  useEffect(() => {
-    if (id) {
-      const dbRef = ref(dataBase, `leaveType/${id}`);
-      onValue(dbRef, (snapshot) => {
-        const data = snapshot.val();
-        setInput(data);
-        console.log(data);
+      const newDepartmentTypeRef = push(userRef);
+      await set(newDepartmentTypeRef, {
+        name: input.name,
       });
-    } else {
-      navigate("/LeaveTable");
+
+      return navigate("/DepartmentTable");
+    } catch (error) {
+      console.error("Error DepartmentType:", error.code, error.message);
+      alert("Invalid DepartmentType");
     }
-  }, []);
+
+    // const dbRef = ref(db, "users/");
+    // await push(dbRef, input);
+  };
 
   return (
     <>
-      <h1 className="text-center text-4xl my-8 font-semibold text-white"> Leave Type Edit</h1>
+      <h1 className="text-center text-4xl my-8 font-semibold text-white"> Leave Type Add</h1>
       <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
         <div className="mb-5">
           <label htmlFor="name" className="block mb-2 text-sm font-medium text-white">
             Leave Type
           </label>
           <input
-            type="LeaveType"
-            id="LeaveType"
+            type="text"
+            id="name"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             placeholder="Enter Your Name"
-            value={input.LeaveType || ""}
             required
             onChange={handleChange}
           />
@@ -67,7 +63,7 @@ export default function LeaveTypeEdit() {
         </button>
 
         <Link
-          to="/LeaveTable"
+          to="/DepartmentTable"
           className="bg-gray-300 hover:bg-gray-800 text-black hover:text-white ms-5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
         >
           Back

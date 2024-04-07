@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import app from "../firebase/firebase";
 
-export default function LeaveTypeEdit() {
+export default function DepartmentTypeEdit() {
   const params = useParams();
   const id = params.id;
   const dataBase = getDatabase(app);
@@ -11,7 +11,7 @@ export default function LeaveTypeEdit() {
   const navigate = useNavigate();
 
   const [input, setInput] = useState({
-    LeaveType: "",
+    name: "",
   });
 
   const handleChange = (e) => {
@@ -21,22 +21,23 @@ export default function LeaveTypeEdit() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const dbRef = ref(dataBase, `leaveType/${id}`);
+    const dbRef = ref(dataBase, `Departments/${id}`);
     await update(dbRef, input);
 
-    navigate("/LeaveTable");
+    navigate("/DepartmentTable");
   };
 
   useEffect(() => {
     if (id) {
-      const dbRef = ref(dataBase, `leaveType/${id}`);
+      console.log(id);
+      const dbRef = ref(dataBase, `Departments/${id}`);
       onValue(dbRef, (snapshot) => {
         const data = snapshot.val();
         setInput(data);
         console.log(data);
       });
     } else {
-      navigate("/LeaveTable");
+      navigate("/DepartmentTable");
     }
   }, []);
 
@@ -49,11 +50,11 @@ export default function LeaveTypeEdit() {
             Leave Type
           </label>
           <input
-            type="LeaveType"
-            id="LeaveType"
+            type="text"
+            id="name"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             placeholder="Enter Your Name"
-            value={input.LeaveType || ""}
+            value={input.name || ""}
             required
             onChange={handleChange}
           />
@@ -67,7 +68,7 @@ export default function LeaveTypeEdit() {
         </button>
 
         <Link
-          to="/LeaveTable"
+          to="/DepartmentTable"
           className="bg-gray-300 hover:bg-gray-800 text-black hover:text-white ms-5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
         >
           Back
