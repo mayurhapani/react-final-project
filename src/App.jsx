@@ -12,6 +12,8 @@ import EmployeeRegister from "./pages/EmployeeRegister.jsx";
 import EmployeeList from "./pages/EmployeeList.jsx";
 import EmployeeEdit from "./pages/EmployeeEdit.jsx";
 import EmployeeDeshbord from "./pages/EmployeeDeshbord.jsx";
+import LeaveTable from "./pages/LeaveTable.jsx";
+import LeaveTypeAdd from "./pages/LeaveTypeAdd.jsx";
 
 function App() {
   return (
@@ -29,6 +31,9 @@ function App() {
       {/* <Route path="/EmployeeList" element={<EmployeeList />} /> */}
       {/* <Route path="/EmployeeEdit" element={<EmployeeEdit />} /> */}
       <Route path="/EmployeeDeshbord" element={<EmployeeDeshbord />} />
+
+      <Route path="/LeaveTable" element={<LeaveTable />} />
+      <Route path="/LeaveTypeAdd" element={<LeaveTypeAdd />} />
     </Routes>
   );
 }
