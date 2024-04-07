@@ -1,53 +1,32 @@
+import { getDatabase, onValue, ref, update } from "firebase/database";
 import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import app from "../firebase/firebase";
-import { getDatabase, onValue, push, ref } from "firebase/database";
-import { Link, useNavigate } from "react-router-dom";
 
-export default function EmployeeRegister() {
+export default function EmployeeView() {
+  const params = useParams();
+  const id = params.id;
+  const [input, setInput] = useState({});
+
+  const navigate = useNavigate();
+
   const dataBase = getDatabase(app);
-  const [departments, setDepartments] = useState([]);
-  console.log(departments);
-
-  const [input, setInput] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    role: "",
-  });
 
   useEffect(() => {
-    const dbRef = ref(dataBase, "Departments/");
+    const dbRef = ref(dataBase, `Employee/${id}`);
     onValue(dbRef, (snapshot) => {
       const data = snapshot.val();
-      if (data) {
-        const departmentNames = Object.values(data).map((department) => department.name);
-        setDepartments(departmentNames);
-      }
+      setInput(data);
+      console.log(data);
     });
   }, []);
 
-  const navigate = useNavigate();
-  const handleChange = (e) => {
-    setInput({ ...input, [e.target.id]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (input.password !== input.confirmPassword) {
-      alert("Passwords do not match.");
-      return;
-    }
-
-    const dbRef = ref(dataBase, "Employee/");
-    await push(dbRef, input);
-    navigate("/EmployeeList");
-  };
+  const handleSubmit = () => {};
+  const handleChange = () => {};
 
   return (
-    <>
-      <h1 className="text-center text-4xl my-8 font-semibold text-white"> Add Employee</h1>
+    <div>
+      <h1 className="text-center text-4xl my-8 font-semibold text-blue-600"> Employee Detail</h1>
       <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
         <div className="mb-5">
           <label htmlFor="name" className="block mb-2 text-sm font-medium text-white">
@@ -58,7 +37,6 @@ export default function EmployeeRegister() {
             id="name"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             placeholder="Enter Your Name"
-            required
             onChange={handleChange}
           />
         </div>
@@ -71,7 +49,6 @@ export default function EmployeeRegister() {
             id="email"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             placeholder="Enter Your Email Address"
-            required
             onChange={handleChange}
           />
         </div>
@@ -82,26 +59,12 @@ export default function EmployeeRegister() {
           <input
             type="password"
             id="password"
-            placeholder="Enter Your Password"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             required
+            value={input?.password || ""}
             onChange={handleChange}
           />
         </div>
-        <div className="mb-5">
-          <label htmlFor="confirmPassword" className="block mb-2 text-sm font-medium text-white">
-            Confirm password
-          </label>
-          <input
-            type="password"
-            id="confirmPassword"
-            placeholder="Confirm Your Password"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            required
-            onChange={handleChange}
-          />
-        </div>
-
         <button
           type="submit"
           className="bg-gray-300 hover:bg-gray-800 text-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
@@ -110,12 +73,12 @@ export default function EmployeeRegister() {
         </button>
 
         <Link
-          to="/Admin"
-          className="bg-gray-300 hover:bg-gray-800 text-black hover:text-white ms-5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          to="/"
+          className="ms-5 bg-gray-300 hover:bg-gray-800 text-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
         >
           Back
         </Link>
       </form>
-    </>
+    </div>
   );
 }

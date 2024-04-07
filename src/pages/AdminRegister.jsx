@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function AdminRegister() {
-  // const db = getDatabase(app);
   const auth = getAuth();
 
   const [input, setInput] = useState({
@@ -43,6 +42,7 @@ export default function AdminRegister() {
         await set(userRef, {
           name: input.name,
           email: input.email,
+          password: input.password,
           role: input.role,
         });
       } else {
@@ -51,6 +51,7 @@ export default function AdminRegister() {
         await set(userRef, {
           name: input.name,
           email: input.email,
+          password: input.password,
           role: input.role,
         });
         return navigate("/AdminDeshbord");

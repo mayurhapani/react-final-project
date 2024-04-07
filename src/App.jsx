@@ -19,6 +19,7 @@ import LeaveApplication from "./pages/LeaveApplication.jsx";
 import DepartmentTable from "./pages/DepartmentTable.jsx";
 import DepartmentTypeAdd from "./pages/DepartmentTypeAdd.jsx";
 import DepartmentTypeEdit from "./pages/DepartmentTypeEdit.jsx";
+import EmployeeView from "./pages/EmployeeView.jsx";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
       <Route path="/EmployeeRegister" element={<EmployeeRegister />} />
       <Route path="/EmployeeList" element={<EmployeeList />} />
       <Route path="/EmployeeEdit/:id" element={<EmployeeEdit />} />
+      <Route path="/EmployeeView/:id" element={<EmployeeView />} />
       <Route path="/EmployeeDeshbord" element={<EmployeeDeshbord />} />
 
       <Route path="/DepartmentTable" element={<DepartmentTable />} />

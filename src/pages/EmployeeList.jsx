@@ -8,10 +8,6 @@ export default function EmployeeList() {
   const [users, setUsers] = useState();
   const navigate = useNavigate();
 
-  const handleEdit = (id) => {
-    navigate(`/EmployeeEdit/${id}`);
-  };
-
   useEffect(() => {
     const dbRef = ref(dataBase, "Employee/");
     const cleanUp = onValue(dbRef, (snapshot) => {
@@ -27,6 +23,14 @@ export default function EmployeeList() {
     });
     return () => cleanUp();
   }, []);
+
+  const handleEdit = (id) => {
+    navigate(`/EmployeeEdit/${id}`);
+  };
+
+  const handleView = (id) => {
+    navigate(`/EmployeeView/${id}`);
+  };
 
   const handleDelete = async (id) => {
     const dbRef = ref(dataBase, `Employee/${id}`);
@@ -62,6 +66,9 @@ export default function EmployeeList() {
                       <td className="px-6 py-4">{user.name}</td>
                       <td className="px-6 py-4">{user.email}</td>
                       <td className="px-6 py-4 flex gap-5">
+                        <button type="button" className="font-medium text-blue-600 hover:underline" onClick={() => handleView(user.id)}>
+                          View
+                        </button>
                         <button type="button" className="font-medium text-blue-600 hover:underline" onClick={() => handleEdit(user.id)}>
                           Edit
                         </button>
