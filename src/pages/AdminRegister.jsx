@@ -12,6 +12,7 @@ export default function AdminRegister() {
     name: "",
     email: "",
     password: "",
+    confirmPassword: "",
     role: "",
   });
 
@@ -23,6 +24,12 @@ export default function AdminRegister() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Check if password and confirm password match
+    if (input.password !== input.confirmPassword) {
+      alert("Passwords do not match.");
+      return;
+    }
 
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, input.email, input.password);
@@ -49,22 +56,11 @@ export default function AdminRegister() {
         return navigate("/AdminDeshbord");
       }
 
-      // const userRef = ref(db, `users/${user.uid}`);
-
-      // await set(userRef, {
-      //   name: input.name,
-      //   email: input.email,
-      //   role: input.role,
-      // });
-
       navigate("/");
     } catch (error) {
       console.error("Error signing up:", error.code, error.message);
       alert("Invalid Entry");
     }
-
-    // const dbRef = ref(db, "users/");
-    // await push(dbRef, input);
   };
 
   return (
@@ -105,6 +101,19 @@ export default function AdminRegister() {
             type="password"
             id="password"
             placeholder="Enter Your Email Password"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            required
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-5">
+          <label htmlFor="confirmPassword" className="block mb-2 text-sm font-medium text-white">
+            Confirm password
+          </label>
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm Your Password"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             required
             onChange={handleChange}
