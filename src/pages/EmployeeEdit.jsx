@@ -51,12 +51,12 @@ export default function EmployeeEdit() {
     e.preventDefault();
     const dbRef = ref(dataBase, `Employee/${id}`);
     await update(dbRef, input);
-    navigate("/EmployeeList");
+    navigate("/AdminDeshbord/EmployeeList");
   };
 
   const handleStateChange = (e) => {
     setStateName(e.target.value);
-    setIsSelected(e.target.value === "" ? false : true);
+    // setIsSelected(e.target.value === "" ? false : true);
   };
 
   // useEffect(() => {
@@ -69,10 +69,9 @@ export default function EmployeeEdit() {
       onValue(dbRef, (snapshot) => {
         const data = snapshot.val();
         setInput(data);
-        console.log(data);
+        setStateName(data.state);
+        // console.log(data);
       });
-    } else {
-      navigate("/EmployeeList");
     }
   }, []);
 
@@ -106,7 +105,6 @@ export default function EmployeeEdit() {
             className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg block w-full p-2.5"
             placeholder="Enter Employee Id"
             value={input.EmployeeId || ""}
-            disabled
             onChange={handleChange}
           />
         </div>
@@ -242,7 +240,7 @@ export default function EmployeeEdit() {
               id="city"
               value={input.city || ""}
               onChange={handleChange}
-              disabled={!isSelected}
+              // disabled={!isSelected}
               className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg  block w-full p-2.5"
             >
               <option disabled selected value="">
@@ -297,7 +295,6 @@ export default function EmployeeEdit() {
               className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg block w-full p-2.5"
               placeholder="Select your passport size photo"
               value={input.photo || ""}
-              required
               onChange={handleChange}
             />
           </div>

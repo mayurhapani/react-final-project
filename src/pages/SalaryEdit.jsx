@@ -37,7 +37,7 @@ export default function SalaryEdit() {
         employeeNames.map((employee) => {
           if (employee.id === id) {
             setSelectedEmployeeId(employee.id);
-            setEmployee(employee.name);
+            setEmployee(employee.first_name || employee.name);
             setSalary(employee.Salary);
             setAllowanceSalary(employee.AllowanceSalary);
             setTotal(employee.Total);
@@ -101,7 +101,7 @@ export default function SalaryEdit() {
               name="employeeNames"
               id="employeeNames"
               className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg  block w-full p-2.5"
-              placeholder="Enter Employee's Salary"
+              placeholder="Enter Employee's Name"
               required
               disabled
               value={employee}

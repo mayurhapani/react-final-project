@@ -73,7 +73,7 @@ export default function EmployeeRegister() {
 
     const dbRef = ref(dataBase, "Employee/");
     await push(dbRef, input);
-    navigate("/EmployeeList");
+    navigate("/AdminDeshbord/EmployeeList");
   };
 
   const handleStateChange = (e) => {

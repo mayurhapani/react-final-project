@@ -76,7 +76,7 @@ export default function SalaryTable() {
                   return (
                     <tr key={user.id} className="bg-white border-b hover:bg-gray-50">
                       <td className="px-6 py-4">{user.first_name || user.name || ""}</td>
-                      <td className="px-6 py-4">{user.DepartmentName}</td>
+                      <td className="px-6 py-4">{user.departments}</td>
                       <td className="px-6 py-4">{user.Salary}</td>
                       <td className="px-6 py-4">{user.AllowanceSalary}</td>
                       <td className="px-6 py-4">{user.Total}</td>

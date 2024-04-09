@@ -35,7 +35,7 @@ export default function SalaryAdd() {
     onValue(dbRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
-        const employeeNames = Object.values(data).map((employeeName) => employeeName.name);
+        const employeeNames = Object.values(data).map((employeeName) => employeeName.first_name);
         // console.log(employeeNames);
         setEmployeeName(employeeNames);
       }
@@ -102,12 +102,11 @@ export default function SalaryAdd() {
   };
 
   return (
-    
-      <div className="bg-[#009487] h-96 pt-9 relative">
-        <h1 className="text-center text-4xl font-semibold text-white p-14">Add Salary</h1>
-        <div className="justify-center items-center mx-auto p-10 shadow-2xl w-1/4 absolute bg-white inset-x-0  rounded-md">
-          <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
-            {/* <div className="mb-5">
+    <div className="bg-[#009487] h-96 pt-9 relative">
+      <h1 className="text-center text-4xl font-semibold text-white p-14">Add Salary</h1>
+      <div className="justify-center items-center mx-auto p-10 shadow-2xl w-1/4 absolute bg-white inset-x-0  rounded-md">
+        <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
+          {/* <div className="mb-5">
           <select
             name="departments"
             id="departments"
@@ -125,70 +124,64 @@ export default function SalaryAdd() {
           </select>
         </div> */}
 
-            <div className="mb-5 outline-[#009487]">
-              <select
-                name="employeeNames"
-                id="employeeNames"
-                onChange={handleChange}
-                className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg  block w-full p-2.5"
-              >
-                <option disabled selected value="">
-                  Select employeeNames
-                </option>
-                {employeeNames.map((option, index) => (
-                  <option key={index} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="mb-5">
-
-              <input
-                type="number"
-                id="Salary"
-                className="bg-gray-50 border outline-[#009487]  block w-full p-2.5"
-                placeholder="Enter Employee's Salary"
-                required
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="mb-5">
-              <input
-                type="number"
-                id="AllowanceSalary"
-                className="bg-gray-50 border outline-[#009487]  block w-full p-2.5"
-                placeholder="Enter Employee's AllowanceSalary"
-                required
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="mb-5 ">
-              <input
-                type="text"
-                id="Total"
-                className="bg-gray-50 border outline-[#009487]  block w-full p-2.5"
-                placeholder="Enter Your Name"
-                required
-                disabled
-                onChange={handleChange}
-                value={Total || 0}
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="border py-1 px-3 bg-[#008075] text-white w-full mb-4"
+          <div className="mb-5 outline-[#009487]">
+            <select
+              name="employeeNames"
+              id="employeeNames"
+              onChange={handleChange}
+              className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg  block w-full p-2.5"
             >
-              Submit
-            </button>
-          </form>
-        </div>
+              <option disabled selected value="">
+                Select employeeNames
+              </option>
+              {employeeNames.map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
 
+          <div className="mb-5">
+            <input
+              type="number"
+              id="Salary"
+              className="bg-gray-50 border outline-[#009487]  block w-full p-2.5"
+              placeholder="Enter Employee's Salary"
+              required
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="mb-5">
+            <input
+              type="number"
+              id="AllowanceSalary"
+              className="bg-gray-50 border outline-[#009487]  block w-full p-2.5"
+              placeholder="Enter Employee's AllowanceSalary"
+              required
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="mb-5 ">
+            <input
+              type="text"
+              id="Total"
+              className="bg-gray-50 border outline-[#009487]  block w-full p-2.5"
+              placeholder="Enter Your Name"
+              required
+              disabled
+              onChange={handleChange}
+              value={Total || 0}
+            />
+          </div>
+
+          <button type="submit" className="border py-1 px-3 bg-[#008075] text-white w-full mb-4">
+            Submit
+          </button>
+        </form>
       </div>
-
+    </div>
   );
 }
