@@ -8,10 +8,9 @@ export default function EmployeeView() {
   const params = useParams();
   const id = params.id;
   const [input, setInput] = useState({});
+  const navigate = useNavigate();
 
   // console.log(input);
-
-  // const navigate = useNavigate();
 
   const dataBase = getDatabase(app);
 
@@ -23,6 +22,10 @@ export default function EmployeeView() {
       console.log(data);
     });
   }, []);
+
+  const handleBack = () => {
+    navigate("/EmployeeList");
+  };
 
   return (
     <div>
@@ -80,6 +83,9 @@ export default function EmployeeView() {
                     <button className="bg-[#22873a] text-white hover:bg-[#18712b] w-full me-2 p-2">Edit Detail</button>
                     <button className="bg-[#cc9c02] text-white hover:bg-[#e1ac02] w-full mx-2 p-2">Salary History</button>
                     <button className="bg-[#b12a35] text-white hover:bg-[#c42232] w-full ms-2 p-2">Leave History</button>
+                    <button onClick={() => handleBack()} className="bg-[#2e2ab1] text-white hover:bg-[#4022c4] w-full ms-2 p-2">
+                      Back
+                    </button>
                   </div>
                 </td>
               </tr>

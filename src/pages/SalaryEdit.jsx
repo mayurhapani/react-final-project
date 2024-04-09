@@ -1,13 +1,17 @@
 import { getDatabase, onValue, push, ref, set, update } from "firebase/database";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import app from "../firebase/firebase";
 
 export default function SalaryEdit() {
+  const params = useParams();
+  const id = params.id;
+
   const navigate = useNavigate();
   const dataBase = getDatabase(app);
   // const [departments, setDepartments] = useState([]);
-  const [employeeNames, setEmployeeName] = useState([]);
+  // const [employeeNames, setEmployeeNames] = useState([]);
+  const [employee, setEmployee] = useState(null);
   const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
   const [salary, setSalary] = useState(0);
   const [allowanceSalary, setAllowanceSalary] = useState(0);
@@ -17,27 +21,28 @@ export default function SalaryEdit() {
     AllowanceSalary: "",
     Total: "",
   });
-  // console.log(selectedEmployeeId);
-
-  // useEffect(() => {
-  //   const dbRef = ref(dataBase, "Departments/");
-  //   onValue(dbRef, (snapshot) => {
-  //     const data = snapshot.val();
-  //     if (data) {
-  //       const departmentNames = Object.values(data).map((department) => department.name);
-  //       setDepartments(departmentNames);
-  //     }
-  //   });
-  // }, []);
 
   useEffect(() => {
     const dbRef = ref(dataBase, "Employee/");
     onValue(dbRef, (snapshot) => {
       const data = snapshot.val();
-      if (data) {
-        const employeeNames = Object.values(data).map((employeeName) => employeeName.name);
-        // console.log(employeeNames);
-        setEmployeeName(employeeNames);
+
+      const temp = Object.keys(data).map((key) => ({
+        id: key,
+        ...data[key],
+      }));
+
+      if (temp) {
+        const employeeNames = Object.values(temp).map((employeeName) => employeeName);
+        employeeNames.map((employee) => {
+          if (employee.id === id) {
+            setSelectedEmployeeId(employee.id);
+            setEmployee(employee.name);
+            setSalary(employee.Salary);
+            setAllowanceSalary(employee.AllowanceSalary);
+            setTotal(employee.Total);
+          }
+        });
       }
     });
   }, []);
@@ -56,25 +61,25 @@ export default function SalaryEdit() {
       setTotal(newTotal);
     }
 
-    if (e.target.id === "employeeNames") {
-      const selectedEmployee = employeeNames.find((employee) => employee === e.target.value);
+    // if (e.target.id === "employeeNames") {
+    //   const selectedEmployee = employeeNames.find((employee) => employee === e.target.value);
 
-      const dataBase = getDatabase(app);
-      const dbRef = ref(dataBase, "Employee/");
-      onValue(dbRef, (snapshot) => {
-        const data = snapshot.val();
+    //   const dataBase = getDatabase(app);
+    //   const dbRef = ref(dataBase, "Employee/");
+    //   onValue(dbRef, (snapshot) => {
+    //     const data = snapshot.val();
 
-        if (selectedEmployee) {
-          const temp = Object.keys(data).map((key) => ({
-            id: key,
-            ...data[key],
-          }));
-          temp.map((user) => {
-            if (user.name === selectedEmployee) setSelectedEmployeeId(user.id);
-          });
-        }
-      });
-    }
+    //     if (selectedEmployee) {
+    //       const temp = Object.keys(data).map((key) => ({
+    //         id: key,
+    //         ...data[key],
+    //       }));
+    //       temp.map((user) => {
+    //         if (user.name === selectedEmployee) setSelectedEmployeeId(user.id);
+    //       });
+    //     }
+    //   });
+    // }
   };
 
   const handleSubmit = async (e) => {
@@ -107,21 +112,16 @@ export default function SalaryEdit() {
 
       <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
         <div className="mb-5">
-          <select
+          <input
+            type="text"
             name="employeeNames"
             id="employeeNames"
-            onChange={handleChange}
-            className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg  block w-full p-2.5"
-          >
-            <option disabled selected value="">
-              Select employeeNames
-            </option>
-            {employeeNames.map((option, index) => (
-              <option key={index} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="Enter Employee's Salary"
+            required
+            disabled
+            value={employee}
+          />
         </div>
 
         <div className="mb-5">
@@ -134,6 +134,7 @@ export default function SalaryEdit() {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             placeholder="Enter Employee's Salary"
             required
+            value={salary ? salary : 0}
             onChange={handleChange}
           />
         </div>
@@ -148,6 +149,7 @@ export default function SalaryEdit() {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             placeholder="Enter Employee's AllowanceSalary"
             required
+            value={allowanceSalary ? allowanceSalary : 0}
             onChange={handleChange}
           />
         </div>
@@ -164,7 +166,7 @@ export default function SalaryEdit() {
             required
             disabled
             onChange={handleChange}
-            value={Total || 0}
+            value={Total ? Total : 0}
           />
         </div>
 
