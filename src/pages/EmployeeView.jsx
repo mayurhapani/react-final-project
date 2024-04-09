@@ -24,7 +24,7 @@ export default function EmployeeView() {
   }, []);
 
   const handleBack = () => {
-    navigate("/EmployeeList");
+    navigate("/AdminDeshbord/EmployeeList");
   };
 
   return (

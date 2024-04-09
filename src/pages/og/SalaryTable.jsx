@@ -40,7 +40,7 @@ export default function SalaryTable() {
   // };
   return (
     <>
-      <h1 className="text-3xl text border-b-4 font-semibold text-center my-8"> Salary History</h1>
+      <h1 className="text-3xl text-white font-semibold text-center my-8"> Edit Admin</h1>
 
       <div className="container m-auto text-right">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -48,25 +48,19 @@ export default function SalaryTable() {
             <thead className="text-sm text-gray-700 uppercase bg-gray-50">
               <tr>
                 <th scope="col" className="px-6 py-3">
-                  Name <i class="ri-arrow-up-down-line"></i>
+                  Name
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Department Name <i class="ri-arrow-up-down-line"></i>
+                  Salary
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Salary <i class="ri-arrow-up-down-line"></i>
+                  AllowanceSalary
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Allowance <i class="ri-arrow-up-down-line"></i>
+                  Total
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Total <i class="ri-arrow-up-down-line"></i>
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Creation Date <i class="ri-arrow-up-down-line"></i>
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Action <i class="ri-arrow-up-down-line"></i>
+                  Action
                 </th>
               </tr>
             </thead>
@@ -76,13 +70,11 @@ export default function SalaryTable() {
                   return (
                     <tr key={user.id} className="bg-white border-b hover:bg-gray-50">
                       <td className="px-6 py-4">{user.name}</td>
-                      <td className="px-6 py-4">{user.DepartmentName}</td>
                       <td className="px-6 py-4">{user.Salary}</td>
                       <td className="px-6 py-4">{user.AllowanceSalary}</td>
                       <td className="px-6 py-4">{user.Total}</td>
-                      <td className="px-6 py-4">{user.CreationDate}</td>
                       <td className="px-6 py-4 flex gap-5">
-                        <button type="button" className="font-medium bg-[#009487] outline-[#009487] ps-6 pe-6 pt-2 pb-2 text-white hover:bg-[#007269]" onClick={() => handleEdit(user.id)}>
+                        <button type="button" className="font-medium text-blue-600 hover:underline" onClick={() => handleEdit(user.id)}>
                           Edit
                         </button>
                       </td>

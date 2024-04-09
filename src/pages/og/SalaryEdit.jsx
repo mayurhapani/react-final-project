@@ -107,68 +107,76 @@ export default function SalaryEdit() {
   };
 
   return (
-      <div className="bg-[#009487] h-96 pt-9 relative">
-        <h1 className="text-center text-4xl font-semibold text-white p-14"> Add Salary</h1>
-        <div className="justify-center items-center mx-auto p-10 shadow-2xl w-1/4 absolute bg-white inset-x-0  rounded-md">
-          <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
-            <div className="mb-5">
-              <input
-                type="text"
-                name="employeeNames"
-                id="employeeNames"
-                className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg  block w-full p-2.5"
-                placeholder="Enter Employee's Salary"
-                required
-                disabled
-                value={employee}
-              />
-            </div>
+    <>
+      <h1 className="text-center text-4xl my-8 font-semibold text-white"> Add Salary</h1>
 
-            <div className="mb-5">
-              <input
-                type="number"
-                id="Salary"
-                className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg  block w-full p-2.5"
-                placeholder="Enter Employee's Salary"
-                required
-                value={salary ? salary : 0}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="mb-5">
-              <input
-                type="number"
-                id="AllowanceSalary"
-                className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg  block w-full p-2.5"
-                placeholder="Enter Employee's AllowanceSalary"
-                required
-                value={allowanceSalary ? allowanceSalary : 0}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="mb-5">
-              <input
-                type="text"
-                id="Total"
-                className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg  block w-full p-2.5"
-                placeholder="Enter Your Name"
-                required
-                disabled
-                onChange={handleChange}
-                value={Total ? Total : 0}
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="border py-1 px-3 bg-[#008075] text-white w-full mb-4"
-            >
-              Submit
-            </button>
-          </form>
+      <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
+        <div className="mb-5">
+          <input
+            type="text"
+            name="employeeNames"
+            id="employeeNames"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="Enter Employee's Salary"
+            required
+            disabled
+            value={employee}
+          />
         </div>
-      </div>
+
+        <div className="mb-5">
+          <label htmlFor="Salary" className="block mb-2 text-sm font-medium text-white">
+            Salary
+          </label>
+          <input
+            type="number"
+            id="Salary"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="Enter Employee's Salary"
+            required
+            value={salary ? salary : 0}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="mb-5">
+          <label htmlFor="AllowanceSalary" className="block mb-2 text-sm font-medium text-white">
+            Allowance Salary
+          </label>
+          <input
+            type="number"
+            id="AllowanceSalary"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="Enter Employee's AllowanceSalary"
+            required
+            value={allowanceSalary ? allowanceSalary : 0}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="mb-5">
+          <label htmlFor="Total" className="block mb-2 text-sm font-medium text-white">
+            Total
+          </label>
+          <input
+            type="text"
+            id="Total"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="Enter Your Name"
+            required
+            disabled
+            onChange={handleChange}
+            value={Total ? Total : 0}
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="bg-gray-300 hover:bg-gray-800 text-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+        >
+          Submit
+        </button>
+      </form>
+    </>
   );
 }
