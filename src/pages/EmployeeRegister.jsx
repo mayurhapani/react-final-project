@@ -13,7 +13,7 @@ export default function EmployeeRegister() {
     email: "",
     password: "",
     confirmPassword: "",
-    role: "",
+    role: "Employee",
   });
 
   useEffect(() => {
@@ -51,6 +51,16 @@ export default function EmployeeRegister() {
         <h1 className="text-center text-[3rem] text-white p-14"> Add Employee</h1>
         <div className="shadow-2xl w-1/4 mx-auto p-10 absolute inset-x-0 bg-white ">
           <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
+            <div className="mb-5">
+              <input
+                type="number"
+                id="EmployeeId"
+                className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg block w-full p-2.5"
+                placeholder="Enter Employee Id"
+                required
+                onChange={handleChange}
+              />
+            </div>
             <div className="mb-5">
               <input
                 type="name"
@@ -93,10 +103,19 @@ export default function EmployeeRegister() {
             </div>
 
             <div className="mb-5">
-              <select name="departments" id="departments" className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg  block w-full p-2.5">
-                <option disabled selected value="select">Select Department</option>
+              <select
+                name="departments"
+                id="departments"
+                onChange={handleChange}
+                className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg  block w-full p-2.5"
+              >
+                <option disabled selected value="">
+                  Select Department
+                </option>
                 {departments.map((option, index) => (
-                  <option key={index} value={option}>{option}</option>
+                  <option key={index} value={option}>
+                    {option}
+                  </option>
                 ))}
               </select>
             </div>
@@ -117,8 +136,6 @@ export default function EmployeeRegister() {
           </form>
         </div>
       </div>
-
-
     </>
   );
 }

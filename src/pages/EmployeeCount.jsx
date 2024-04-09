@@ -8,7 +8,7 @@ export default function EmployeeCount() {
 
   useEffect(() => {
     const db = getDatabase();
-    const usersRef = ref(db, `employee`);
+    const usersRef = ref(db, `Employee`);
 
     // Listen for changes to the count of users with the specified role
     const unsubscribe = onValue(usersRef, (snapshot) => {

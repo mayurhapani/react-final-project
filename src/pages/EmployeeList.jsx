@@ -19,6 +19,11 @@ export default function EmployeeList() {
         }));
 
         setUsers(temp);
+
+        // console.log(temp);
+        //       temp.map((user, idx) => {
+        //         console.log(user.id);
+        //       });
       }
     });
     return () => cleanUp();

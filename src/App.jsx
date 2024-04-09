@@ -22,9 +22,9 @@ import DepartmentTable from "./pages/DepartmentTable.jsx";
 import DepartmentTypeAdd from "./pages/DepartmentTypeAdd.jsx";
 import DepartmentTypeEdit from "./pages/DepartmentTypeEdit.jsx";
 import EmployeeView from "./pages/EmployeeView.jsx";
-import SaleryAdd from "./pages/SaleryAdd.jsx";
-import SaleryTable from "./pages/SaleryTable.jsx";
-import SaleryEdit from "./pages/SaleryEdit.jsx";
+import SalaryAdd from "./pages/SalaryAdd.jsx";
+import SalaryTable from "./pages/SalaryTable.jsx";
+import SalaryEdit from "./pages/SalaryEdit.jsx";
 
 function App() {
   return (
@@ -52,9 +52,9 @@ function App() {
       <Route path="/LeaveTypeAdd" element={<LeaveTypeAdd />} />
       <Route path="/LeaveTypeEdit/:id" element={<LeaveTypeEdit />} />
 
-      <Route path="/SaleryTable" element={<SaleryTable />} />
-      <Route path="/SaleryAdd" element={<SaleryAdd />} />
-      <Route path="/SaleryEdit/:id" element={<SaleryEdit />} />
+      <Route path="/SalaryTable" element={<SalaryTable />} />
+      <Route path="/SalaryAdd" element={<SalaryAdd />} />
+      <Route path="/SalaryEdit/:id" element={<SalaryEdit />} />
 
       <Route path="/LeaveApplication" element={<LeaveApplication />} />
     </Routes>
