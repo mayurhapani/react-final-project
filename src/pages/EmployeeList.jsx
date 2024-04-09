@@ -68,7 +68,7 @@ export default function EmployeeList() {
                 users.map((user, idx) => {
                   return (
                     <tr key={user.id} className="bg-white border-b hover:bg-gray-50">
-                      <td className="px-6 py-4">{user.name}</td>
+                      <td className="px-6 py-4">{user.first_name || user.name || ""}</td>
                       <td className="px-6 py-4">{user.email}</td>
                       <td className="px-6 py-4 flex gap-5">
                         <button type="button" className="font-medium text-blue-600 hover:underline" onClick={() => handleView(user.id)}>

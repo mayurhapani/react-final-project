@@ -47,37 +47,37 @@ export default function EmployeeView() {
               </tr>
               <tr>
                 <th className="text-start ps-3 border">First Name</th>
-                <td className="border ps-3 py-2">Columbus</td>
+                <td className="border ps-3 py-2">{input.first_name}</td>
                 <th className="text-start ps-3 border">Last Name</th>
-                <td className="border ps-3 py-2">Columbus</td>
+                <td className="border ps-3 py-2">{input.last_name}</td>
               </tr>
               <tr>
                 <th className="text-start ps-3 border">Department</th>
-                <td className="border ps-3 py-2">Detroit</td>
+                <td className="border ps-3 py-2">{input.departments}</td>
                 <th className="text-start ps-3 border">Email</th>
-                <td className="border ps-3 py-2">Detroit</td>
+                <td className="border ps-3 py-2">{input.email}</td>
               </tr>
               <tr>
                 <th className="text-start ps-3 border">DOB</th>
-                <td className="border ps-3 py-2">Detroit</td>
+                <td className="border ps-3 py-2">{input.dob}</td>
                 <th className="text-start ps-3 border">Date Of Joining</th>
-                <td className="border ps-3 py-2">Detroit</td>
+                <td className="border ps-3 py-2">{input.doj}</td>
               </tr>
               <tr>
                 <th className="text-start ps-3 border">Address</th>
-                <td className="border ps-3 py-2">Detroit</td>
+                <td className="border ps-3 py-2">{input.address}</td>
                 <th className="text-start ps-3 border">City</th>
-                <td className="border ps-3 py-2">Detroit</td>
+                <td className="border ps-3 py-2">{input.city}</td>
               </tr>
               <tr>
                 <th className="text-start ps-3 border">State</th>
-                <td className="border ps-3 py-2">Detroit</td>
+                <td className="border ps-3 py-2">{input.state}</td>
                 <th className="text-start ps-3 border">Country</th>
-                <td className="border ps-3 py-2">Detroit</td>
+                <td className="border ps-3 py-2">{input.country}</td>
               </tr>
               <tr>
                 <th className="text-start ps-3 border">Mobile</th>
-                <td className="border ps-3 py-2">Detroit</td>
+                <td className="border ps-3 py-2">{input.mobile_number}</td>
                 <td colSpan="2">
                   <div className="flex">
                     <button className="bg-[#22873a] text-white hover:bg-[#18712b] w-full me-2 p-2">Edit Detail</button>

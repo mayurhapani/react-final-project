@@ -2,13 +2,15 @@ import { getDatabase, onValue, ref, update } from "firebase/database";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import app from "../firebase/firebase";
+import img from "../assets/images/user.png";
 
 export default function EmployeeView() {
   const params = useParams();
   const id = params.id;
   const [input, setInput] = useState({});
-
   const navigate = useNavigate();
+
+  // console.log(input);
 
   const dataBase = getDatabase(app);
 
@@ -21,64 +23,76 @@ export default function EmployeeView() {
     });
   }, []);
 
-  const handleSubmit = () => {};
-  const handleChange = () => {};
+  const handleBack = () => {
+    navigate("/EmployeeList");
+  };
 
   return (
     <div>
-      <h1 className="text-center text-4xl my-8 font-semibold text-blue-600"> Employee Detail</h1>
-      <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
-        <div className="mb-5">
-          <label htmlFor="name" className="block mb-2 text-sm font-medium text-white">
-            Your name
-          </label>
-          <input
-            type="name"
-            id="name"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            placeholder="Enter Your Name"
-            onChange={handleChange}
-          />
+      <div className="bg-[#009487] h-32 pt-9">
+        <h1 className="text-center text-4xl font-semibold text-white"> Employee Detail</h1>
+      </div>
+      <div className="flex">
+        <div className="w-1/5 border"></div>
+        <div className="w-4/5 border p-5">
+          <table className="border-separate border-spacing-2 border border-slate-400 w-full shadow-2xl">
+            <tbody>
+              <tr>
+                <th className="text-start ps-3 border p-3">EmpID</th>
+                <td className="border ps-3 py-2">{input.EmployeeId}</td>
+                <th className="text-start ps-3 border">Photo</th>
+                <td className="border ps-3 py-2">
+                  <img src={img} width="100px" alt="" />
+                </td>
+              </tr>
+              <tr>
+                <th className="text-start ps-3 border">First Name</th>
+                <td className="border ps-3 py-2">Columbus</td>
+                <th className="text-start ps-3 border">Last Name</th>
+                <td className="border ps-3 py-2">Columbus</td>
+              </tr>
+              <tr>
+                <th className="text-start ps-3 border">Department</th>
+                <td className="border ps-3 py-2">Detroit</td>
+                <th className="text-start ps-3 border">Email</th>
+                <td className="border ps-3 py-2">Detroit</td>
+              </tr>
+              <tr>
+                <th className="text-start ps-3 border">DOB</th>
+                <td className="border ps-3 py-2">Detroit</td>
+                <th className="text-start ps-3 border">Date Of Joining</th>
+                <td className="border ps-3 py-2">Detroit</td>
+              </tr>
+              <tr>
+                <th className="text-start ps-3 border">Address</th>
+                <td className="border ps-3 py-2">Detroit</td>
+                <th className="text-start ps-3 border">City</th>
+                <td className="border ps-3 py-2">Detroit</td>
+              </tr>
+              <tr>
+                <th className="text-start ps-3 border">State</th>
+                <td className="border ps-3 py-2">Detroit</td>
+                <th className="text-start ps-3 border">Country</th>
+                <td className="border ps-3 py-2">Detroit</td>
+              </tr>
+              <tr>
+                <th className="text-start ps-3 border">Mobile</th>
+                <td className="border ps-3 py-2">Detroit</td>
+                <td colSpan="2">
+                  <div className="flex">
+                    <button className="bg-[#22873a] text-white hover:bg-[#18712b] w-full me-2 p-2">Edit Detail</button>
+                    <button className="bg-[#cc9c02] text-white hover:bg-[#e1ac02] w-full mx-2 p-2">Salary History</button>
+                    <button className="bg-[#b12a35] text-white hover:bg-[#c42232] w-full ms-2 p-2">Leave History</button>
+                    <button onClick={() => handleBack()} className="bg-[#2e2ab1] text-white hover:bg-[#4022c4] w-full ms-2 p-2">
+                      Back
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div className="mb-5">
-          <label htmlFor="email" className="block mb-2 text-sm font-medium text-white">
-            Your email
-          </label>
-          <input
-            type="email"
-            id="email"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            placeholder="Enter Your Email Address"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-5">
-          <label htmlFor="password" className="block mb-2 text-sm font-medium text-white">
-            Your password
-          </label>
-          <input
-            type="password"
-            id="password"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            required
-            value={input?.password || ""}
-            onChange={handleChange}
-          />
-        </div>
-        <button
-          type="submit"
-          className="bg-gray-300 hover:bg-gray-800 text-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-        >
-          Submit
-        </button>
-
-        <Link
-          to="/"
-          className="ms-5 bg-gray-300 hover:bg-gray-800 text-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-        >
-          Back
-        </Link>
-      </form>
+      </div>
     </div>
   );
 }

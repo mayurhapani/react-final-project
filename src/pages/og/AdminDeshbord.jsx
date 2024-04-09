@@ -4,11 +4,6 @@ import { useNavigate } from "react-router-dom"; // Import useHistory for program
 import EmployeeCount from "./EmployeeCount";
 import LeaveTypeCount from "./LeaveTypeCount";
 import DepartmentTypeCount from "./DepartmentTypeCount";
-import Header from "../component/Header";
-import Aside from "../component/Aside";
-import Main_Data from "../component/Main_Data";
-
-// import EmployeeRegister from "./EmployeeRegister.jsx";
 
 const auth = getAuth();
 
@@ -33,12 +28,14 @@ export default function AdminDeshbord() {
 
   return (
     <>
-      <div className="h-screen">
-        <Header />
-        <Aside />
-        <Main_Data />
-        {/* <EmployeeRegister /> */}
-      </div>
+      <button className="border  mt-5 py-2 px-3 rounded-4 shadow-lg" onClick={handleSignOut}>
+        Sign Out
+      </button>
+
+      <div>AdminDeshbord</div>
+      <EmployeeCount />
+      <LeaveTypeCount />
+      <DepartmentTypeCount />
     </>
   );
 }

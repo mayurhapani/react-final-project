@@ -35,11 +35,14 @@ function App() {
       <Route path="/AdminRegister" element={<AdminRegister />} />
       <Route path="/AdminList" element={<AdminList />} />
       <Route path="/AdminEdit/:id" element={<AdminEdit />} />
-      <Route path="/AdminDeshbord" element={<AdminDeshbord />} />
+      <Route path="/AdminDeshbord" element={<AdminDeshbord />}>
+        <Route path="EmployeeRegister" />
+        <Route path="EmployeeList" />
+      </Route>
 
       {/* <Route path="/EmployeeLogin" element={<EmployeeLogin />} /> */}
-      <Route path="/EmployeeRegister" element={<EmployeeRegister />} />
-      <Route path="/EmployeeList" element={<EmployeeList />} />
+      {/* <Route path="EmployeeRegister" element={<EmployeeRegister /> /> */}
+      {/* <Route path="/EmployeeList" element={<EmployeeList />} /> */}
       <Route path="/EmployeeEdit/:id" element={<EmployeeEdit />} />
       <Route path="/EmployeeView/:id" element={<EmployeeView />} />
       <Route path="/EmployeeDeshbord" element={<EmployeeDeshbord />} />

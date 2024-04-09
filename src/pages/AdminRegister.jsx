@@ -47,7 +47,7 @@ export default function AdminRegister() {
           role: input.role,
         });
       } else {
-        const userRef = ref(db, `employee/${user.uid}`);
+        const userRef = ref(db, `Employee/${user.uid}`);
 
         await set(userRef, {
           name: input.name,
@@ -140,8 +140,6 @@ export default function AdminRegister() {
           </form>
         </div>
       </div>
-
-
     </>
   );
 }
