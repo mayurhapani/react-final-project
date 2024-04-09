@@ -5,18 +5,18 @@
 }
 
 .homeCont {
-  background-color: rgb(173 42 42 / 56%);
+  background-color: #377a94c2;
   backdrop-filter: blur(1px);
   border-radius: 20px 20px 20px 20px;
-  box-shadow: 10px 10px 10px 10px #000000b5;
+  box-shadow: 0px 0px 20px 0px #000000b5;
 }
 
 .homeBtn {
-  transition: all linear 0.2s;
+  transition: all linear 0.1s;
 }
 
 .homeBtn:hover {
-  box-shadow: 0px 0px 33px 26px #00ff59;
+  box-shadow: 0px 0px 8px 2px #00000090;
 }
 
 /* ---------header-start----- */
@@ -73,24 +73,3 @@
 }
 
 /* --------------MAIN DATA END ---------------*/
-
-.homePageBgImage {
-  background-image: url(../src/assets/images/1.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.homeCont {
-  background-color: #377a94c2;
-  backdrop-filter: blur(1px);
-  border-radius: 20px 20px 20px 20px;
-  box-shadow: 0px 0px 20px 0px #000000b5;
-}
-
-.homeBtn {
-  transition: all linear 0.1s;
-}
-
-.homeBtn:hover {
-  box-shadow: 0px 0px 8px 2px #00000090;
-}
