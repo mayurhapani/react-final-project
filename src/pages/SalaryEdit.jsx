@@ -41,6 +41,10 @@ export default function SalaryEdit() {
             setSalary(employee.Salary);
             setAllowanceSalary(employee.AllowanceSalary);
             setTotal(employee.Total);
+            setInput({
+              Salary: employee.Salary,
+              AllowanceSalary: employee.AllowanceSalary,
+            });
           }
         });
       }

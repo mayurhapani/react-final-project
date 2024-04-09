@@ -7,9 +7,9 @@ import AdminList from "./pages/AdminList.jsx";
 import AdminEdit from "./pages/AdminEdit.jsx";
 import AdminDeshbord from "./pages/AdminDeshbord.jsx";
 
-import EmployeeLogin from "./pages/EmployeeLogin.jsx";
-import EmployeeRegister from "./pages/EmployeeRegister.jsx";
-import EmployeeList from "./pages/EmployeeList.jsx";
+// import EmployeeLogin from "./pages/EmployeeLogin.jsx";
+// import EmployeeRegister from "./pages/EmployeeRegister.jsx";
+// import EmployeeList from "./pages/EmployeeList.jsx";
 import EmployeeEdit from "./pages/EmployeeEdit.jsx";
 import EmployeeDeshbord from "./pages/EmployeeDeshbord.jsx";
 
