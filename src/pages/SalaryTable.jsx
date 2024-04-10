@@ -30,7 +30,7 @@ export default function SalaryTable() {
   }, []);
 
   const handleEdit = (id) => {
-    navigate(`/SalaryEdit/${id}`);
+    navigate(`/AdminDeshbord/SalaryEdit/${id}`);
   };
 
   // const handleDelete = async (id) => {

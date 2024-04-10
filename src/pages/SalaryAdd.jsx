@@ -94,7 +94,7 @@ export default function SalaryAdd() {
         Total: total,
       });
 
-      return navigate("/SalaryTable");
+      return navigate("/AdminDeshbord/SalaryTable");
     } catch (error) {
       console.error("Error SalaryAdd:", error.code, error.message);
       alert("Invalid SalaryAdd");

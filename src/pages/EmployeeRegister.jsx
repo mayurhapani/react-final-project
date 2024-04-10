@@ -34,7 +34,7 @@ export default function EmployeeRegister() {
     role: "Employee",
   });
 
-  console.log(input);
+  // console.log(input);
 
   const stateList = Object.keys(cityData);
 
@@ -335,7 +335,7 @@ export default function EmployeeRegister() {
               </button>
 
               <Link
-                to="/Admin"
+                to="/AdminDeshbord/EmployeeList"
                 className="bg-[#009487] hover:bg-[#007269] text-white ms-5 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
               >
                 Back

@@ -24,7 +24,7 @@ export default function LeaveTypeEdit() {
     const dbRef = ref(dataBase, `leaveType/${id}`);
     await update(dbRef, input);
 
-    navigate("/LeaveTable");
+    navigate("/AdminDeshbord/LeaveTable");
   };
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function LeaveTypeEdit() {
         console.log(data);
       });
     } else {
-      navigate("/LeaveTable");
+      navigate("/AdminDeshbord/LeaveTable");
     }
   }, []);
 
@@ -67,7 +67,7 @@ export default function LeaveTypeEdit() {
         </button>
 
         <Link
-          to="/LeaveTable"
+          to="/AdminDeshbord/LeaveTable"
           className="bg-gray-300 hover:bg-gray-800 text-black hover:text-white ms-5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
         >
           Back

@@ -22,9 +22,10 @@ import LeaveApplication from "./pages/LeaveApplication.jsx";
 // import DepartmentTypeAdd from "./pages/DepartmentTypeAdd.jsx";
 // import DepartmentTypeEdit from "./pages/DepartmentTypeEdit.jsx";
 // import EmployeeView from "./pages/EmployeeView.jsx";
-import SalaryAdd from "./pages/SalaryAdd.jsx";
-import SalaryTable from "./pages/SalaryTable.jsx";
-import SalaryEdit from "./pages/SalaryEdit.jsx";
+
+// import SalaryAdd from "./pages/SalaryAdd.jsx";
+// import SalaryTable from "./pages/SalaryTable.jsx";
+// import SalaryEdit from "./pages/SalaryEdit.jsx";
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
       <Route path="/AdminRegister" element={<AdminRegister />} />
       <Route path="/AdminList" element={<AdminList />} />
       <Route path="/AdminEdit/:id" element={<AdminEdit />} />
-      <Route path="/AdminDeshbord" element={<AdminDeshbord />}>
+      <Route path="/AdminDeshbord//*" element={<AdminDeshbord />}>
         <Route path="DepartmentTable" />
         <Route path="DepartmentTypeAdd" />
         <Route path="DepartmentTypeEdit/:id" />

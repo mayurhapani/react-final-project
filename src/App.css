@@ -48,21 +48,25 @@
   top: 76px;
   left: 0;
   bottom: 0;
+  overflow-x: scroll;
 }
-
-/* section {
-  padding: 60px 0;
-} */
 
 .AsideList li {
-  /* margin-left: 60px; */
-  /* padding: 20px; */
   color: white;
 }
+/* SCROLL BAR */
+.aside::-webkit-scrollbar {
+  width: 6px;
+}
 
-/* .AsideList li i {
-  margin-right: 20px;
-} */
+.aside::-webkit-scrollbar-thumb {
+  background: #adb7c9;
+  border-radius: 10px;
+}
+
+.aside::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 
 /* --------------MAIN DATA START ---------------*/
 .main_data {

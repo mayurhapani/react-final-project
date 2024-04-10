@@ -11,7 +11,7 @@ export default function LeaveTable() {
 
   useEffect(() => {
     const dbRef = ref(dataBase, "leaveType/");
-    console.log(dbRef);
+    // console.log(dbRef);
 
     const cleanUp = onValue(dbRef, (snapshot) => {
       const data = snapshot.val();
@@ -31,7 +31,7 @@ export default function LeaveTable() {
 
   const handleEdit = (id) => {
     // console.log(id);
-    navigate(`/LeaveTypeEdit/${id}`);
+    navigate(`/AdminDeshbord/LeaveTypeEdit/${id}`);
   };
   const handleDelete = async (id) => {
     const dbRef = ref(dataBase, `leaveType/${id}`);

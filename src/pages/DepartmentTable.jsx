@@ -11,7 +11,7 @@ export default function DepartmentTable() {
 
   useEffect(() => {
     const dbRef = ref(dataBase, "Departments/");
-    console.log(dbRef);
+    // console.log(dbRef);
 
     const cleanUp = onValue(dbRef, (snapshot) => {
       const data = snapshot.val();
@@ -31,7 +31,7 @@ export default function DepartmentTable() {
 
   const handleEdit = (id) => {
     // console.log(id);
-    navigate(`/DepartmentTypeEdit/${id}`);
+    navigate(`/AdminDeshbord/DepartmentTypeEdit/${id}`);
   };
 
   const handleDelete = async (id) => {
