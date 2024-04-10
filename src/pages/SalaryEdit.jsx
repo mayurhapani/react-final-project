@@ -92,7 +92,7 @@ export default function SalaryEdit() {
 
   return (
     <div className="bg-[#009487] h-96 pt-9 relative">
-      <h1 className="text-center text-4xl font-semibold text-white p-14"> Add Salary</h1>
+      <h1 className="text-center text-4xl font-semibold text-white p-14"> Edit Salary</h1>
       <div className="justify-center items-center mx-auto p-10 shadow-2xl w-1/4 absolute bg-white inset-x-0  rounded-md">
         <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
           <div className="mb-5">

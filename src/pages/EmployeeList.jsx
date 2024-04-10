@@ -30,16 +30,16 @@ export default function EmployeeList() {
   }, []);
 
   const handleEdit = (id) => {
-    navigate(`/EmployeeEdit/${id}`);
+    navigate(`/AdminDeshbord/EmployeeEdit/${id}`);
   };
 
   const handleView = (id) => {
-    navigate(`/EmployeeView/${id}`);
+    navigate(`/AdminDeshbord/EmployeeView/${id}`);
   };
 
   const handleDelete = async (id) => {
     const dbRef = ref(dataBase, `Employee/${id}`);
-    const result = await remove(dbRef);
+    await remove(dbRef);
     setUsers((state) => state.filter((user) => user.id != id));
   };
 

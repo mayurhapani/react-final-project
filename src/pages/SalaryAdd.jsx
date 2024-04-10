@@ -106,24 +106,6 @@ export default function SalaryAdd() {
       <h1 className="text-center text-4xl font-semibold text-white p-14">Add Salary</h1>
       <div className="justify-center items-center mx-auto p-10 shadow-2xl w-1/4 absolute bg-white inset-x-0  rounded-md">
         <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
-          {/* <div className="mb-5">
-          <select
-            name="departments"
-            id="departments"
-            onChange={handleChange}
-            className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg  block w-full p-2.5"
-          >
-            <option disabled selected value="">
-              Select Department
-            </option>
-            {departments.map((option, index) => (
-              <option key={index} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </div> */}
-
           <div className="mb-5 outline-[#009487]">
             <select
               name="employeeNames"
