@@ -17,7 +17,7 @@ export default function SalaryAdd() {
     AllowanceSalary: "",
     Total: "",
   });
-  // console.log(selectedEmployeeId);
+  console.log(selectedEmployeeId);
 
   // useEffect(() => {
   //   const dbRef = ref(dataBase, "Departments/");
@@ -58,6 +58,7 @@ export default function SalaryAdd() {
 
     if (e.target.id === "employeeNames") {
       const selectedEmployee = employeeNames.find((employee) => employee === e.target.value);
+      // console.log(selectedEmployee);
 
       const dataBase = getDatabase(app);
       const dbRef = ref(dataBase, "Employee/");
@@ -70,7 +71,8 @@ export default function SalaryAdd() {
             ...data[key],
           }));
           temp.map((user) => {
-            if (user.name === selectedEmployee) setSelectedEmployeeId(user.id);
+            // console.log(user);
+            if (user.first_name === selectedEmployee) setSelectedEmployeeId(user.id);
           });
         }
       });

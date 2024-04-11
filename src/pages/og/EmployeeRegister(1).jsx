@@ -63,7 +63,7 @@ export default function EmployeeRegister() {
             </div>
             <div className="mb-5">
               <input
-                type="name"
+                type="text"
                 id="name"
                 className="bg-gray-50 border outline-[#009487] text-gray-900 text-sm rounded-lg block w-full p-2.5"
                 placeholder="Enter Your Name"

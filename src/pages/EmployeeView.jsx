@@ -80,11 +80,14 @@ export default function EmployeeView() {
                 <td className="border ps-3 py-2">{input.mobile_number}</td>
                 <td colSpan="2">
                   <div className="flex">
-                    <Link to={`/AdminDeshbord/EmployeeEdit/${id}`} className="bg-[#22873a] text-white hover:bg-[#18712b] w-full me-2 p-2">
+                    <Link
+                      to={`/AdminDeshbord/EmployeeEdit/${id}`}
+                      className="text-center bg-[#22873a] text-white hover:bg-[#18712b] w-full me-2 p-2"
+                    >
                       Edit Detail
                     </Link>
-                    <Link className="bg-[#cc9c02] text-white hover:bg-[#e1ac02] w-full mx-2 p-2">Salary History</Link>
-                    <Link className="bg-[#b12a35] text-white hover:bg-[#c42232] w-full ms-2 p-2">Leave History</Link>
+                    <Link className="text-center bg-[#cc9c02] text-white hover:bg-[#e1ac02] w-full mx-2 p-2">Salary History</Link>
+                    <Link className="text-center bg-[#b12a35] text-white hover:bg-[#c42232] w-full ms-2 p-2">Leave History</Link>
                     <button onClick={() => handleBack()} className="bg-[#2e2ab1] text-white hover:bg-[#4022c4] w-full ms-2 p-2">
                       Back
                     </button>
