@@ -36,7 +36,7 @@ function App() {
       <Route path="/AdminRegister" element={<AdminRegister />} />
       <Route path="/AdminList" element={<AdminList />} />
       <Route path="/AdminEdit/:id" element={<AdminEdit />} />
-      <Route path="/AdminDeshbord//*" element={<AdminDeshbord />}>
+      <Route path="/AdminDeshbord" element={<AdminDeshbord />}>
         <Route path="DepartmentTable" />
         <Route path="DepartmentTypeAdd" />
         <Route path="DepartmentTypeEdit/:id" />
